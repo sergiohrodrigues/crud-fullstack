@@ -1,12 +1,11 @@
 
 <div class="container mt-5">
-  <button class="btn btn-success w-100" routerLinkActive="router-link-active"  >Novo item</button>
+  <button class="btn btn-success w-100" [routerLink]="['/cadastro']" routerLinkActive="router-link-active">Novo item</button>
+
   <div>
       <label class="form-label mt-4">Pesquisar:</label>
       <input class="form-control" type="text" placeholder="Qual item deseja buscar?" (input)="search($event)"/>
   </div>
-
-
 
   <table class="table table-hover table-bordered mt-5">
       <thead class="table-dark">
@@ -14,31 +13,37 @@
               <th>Id</th>
               <th>Nome</th>
               <th>Descrição</th>
-              <th>Opções</th>
+              <th style="width: 144px;">Opções</th>
           </tr>
       </thead>
 
       <tbody>
-
-
           @if(items.length > 0){
               @for (item of items; track $index) {
-
                   <tr>
                       <td>{{item.id}}</td>
                       <td>{{item.name}}</td>
                       <td>{{item.description}}</td>
                       <td>
-
-                          <button class="btn btn-warning mx-2">Editar</button>
-                          <button class="btn btn-info mx-2">Detalhes</button>
-                          <button class="btn btn-danger mx-2" (click)="deletar(item.id)" >Excluir</button>
+                        <button class="btn btn-warning mx-1" [routerLink]="['/editar', item.id]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                          </svg>
+                      </button>
+                        <button class="btn btn-info mx-1" [routerLink]="['/detalhes', item.id]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 2h-4v3h4zm0 4h-4v3h4zm0 4h-4v3h3a1 1 0 0 0 1-1zm-5 3v-3H6v3zm-5 0v-3H1v2a1 1 0 0 0 1 1zm-4-4h4V8H1zm0-4h4V4H1zm5-3v3h4V4zm4 4H6v3h4z"/>
+                          </svg>
+                        </button>
+                        <button class="btn btn-danger mx-1" (click)="deletar(item.id)">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                          </svg>
+                        </button>
                       </td>
 
                   </tr>
-
-
-
               }
           }@else {
               <tr class="text-center">
@@ -49,6 +54,4 @@
 
       </tbody>
   </table>
-
-  <p>teste</p>
 </div>

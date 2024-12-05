@@ -166,3 +166,4 @@ E:\Nova pasta\crud-fullstack\backend\obj\Debug\net8.0\refint\webApiCrud.dll
 E:\Nova pasta\crud-fullstack\backend\obj\Debug\net8.0\webApiCrud.pdb
 E:\Nova pasta\crud-fullstack\backend\obj\Debug\net8.0\webApiCrud.genruntimeconfig.cache
 E:\Nova pasta\crud-fullstack\backend\obj\Debug\net8.0\ref\webApiCrud.dll
+E:\Nova pasta\crud-fullstack\backend\obj\Debug\net8.0\webApiCrud.sourcelink.json

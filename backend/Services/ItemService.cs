@@ -35,6 +35,34 @@ namespace crud_fullstack.Services
             }
         }
 
+        public async Task<ResponseModel<ItemModel>> GetItemId(int id)
+        {
+            ResponseModel<ItemModel> response = new ResponseModel<ItemModel>();
+
+            try
+            {
+
+                var item = await _context.Items.FirstOrDefaultAsync(i => i.Id == id);
+
+                if (item == null)
+                {
+                    response.Mensagem = "Item não encontrado!";
+                    return response;
+                }
+
+                response.Dados = item;
+                response.Mensagem = "Item encontrado com sucesso!";
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+                response.Mensagem = ex.Message;
+                response.Status = false;
+                return response;
+            }
+        }
+
         public async Task<ResponseModel<ItemModel>> CreateItem(ItemCreateDto itemCreateDto)
         {
             ResponseModel<ItemModel> response = new ResponseModel<ItemModel>();

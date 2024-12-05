@@ -23,6 +23,13 @@ namespace crud_fullstack.Controllers
             return Ok(items);
         }
         
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ResponseModel<ItemModel>>> GetItemId(int id)
+        {
+            var item = await _itemInterface.GetItemId(id);
+            return Ok(item);
+        }
+
         [HttpPost]
         public async Task<ActionResult<ResponseModel<ItemModel>>> CreateItem(ItemCreateDto itemDto)
         {
@@ -43,5 +50,6 @@ namespace crud_fullstack.Controllers
             var item = await _itemInterface.DeleteItem(id);
             return Ok(item);
         }
+        
     }
 }
