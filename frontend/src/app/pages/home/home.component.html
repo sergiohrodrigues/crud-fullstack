@@ -1,0 +1,54 @@
+
+<div class="container mt-5">
+  <button class="btn btn-success w-100" routerLinkActive="router-link-active"  >Novo item</button>
+  <div>
+      <label class="form-label mt-4">Pesquisar:</label>
+      <input class="form-control" type="text" placeholder="Qual item deseja buscar?" (input)="search($event)"/>
+  </div>
+
+
+
+  <table class="table table-hover table-bordered mt-5">
+      <thead class="table-dark">
+          <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Opções</th>
+          </tr>
+      </thead>
+
+      <tbody>
+
+
+          @if(items.length > 0){
+              @for (item of items; track $index) {
+
+                  <tr>
+                      <td>{{item.id}}</td>
+                      <td>{{item.name}}</td>
+                      <td>{{item.description}}</td>
+                      <td>
+
+                          <button class="btn btn-warning mx-2">Editar</button>
+                          <button class="btn btn-info mx-2">Detalhes</button>
+                          <button class="btn btn-danger mx-2" (click)="deletar(item.id)" >Excluir</button>
+                      </td>
+
+                  </tr>
+
+
+
+              }
+          }@else {
+              <tr class="text-center">
+                  <td colspan="7">Nenhum usuário cadastrado</td>
+              </tr>
+          }
+
+
+      </tbody>
+  </table>
+
+  <p>teste</p>
+</div>
